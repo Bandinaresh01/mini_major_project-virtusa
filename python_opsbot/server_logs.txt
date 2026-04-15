@@ -1,0 +1,10 @@
+2023-11-01 10:00:01 INFO Application started successfully
+2023-11-01 10:05:12 WARNING Memory usage is high
+2023-11-01 10:06:45 ERROR Database connection failed
+2023-11-01 10:10:00 INFO User 'admin' logged in
+2023-11-01 10:12:30 FAILED LOGIN Attempt from IP 192.168.1.100
+2023-11-01 10:15:10 CRITICAL Payment gateway unresponsive
+2023-11-01 10:18:22 INFO Transaction #12344 completed
+2023-11-01 10:20:01 ERROR Null reference exception in PaymentModule
+2023-11-01 10:25:00 INFO Scheduled backup completed
+2023-11-01 10:30:15 FAILED LOGIN Attempt for user 'root' from IP 10.0.0.5
