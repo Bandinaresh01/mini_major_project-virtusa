@@ -1,0 +1,7 @@
+John Doe
+Software Developer
+
+Experienced developer proficient in Python, Java, and SQL. 
+I have built multiple backend API solutions.
+Familiar with Docker environments and solid teamwork capabilities.
+Looking to join an innovative machine learning team!

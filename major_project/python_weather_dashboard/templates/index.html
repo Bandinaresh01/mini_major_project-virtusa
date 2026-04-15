@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Dashboard</title>
+    <!-- Include CDN for Chart.js to handle beautiful web visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #333; text-align: center; }
+        .status { padding: 10px; background: #eef; border-left: 5px solid #2b6cb0; margin-bottom: 20px; }
+        .prediction { background-color: #fbd38d; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Global Weather Analyzer Dashboard</h1>
+        <div class="status">
+            <strong>System Status:</strong> {{ api_status }}
+        </div>
+        
+        <div class="prediction">
+            <h3>Machine Learning Prediction</h3>
+            <p>Based on current temperature trends (Regression Modeling), the predicted temperature for <strong>{{ prediction.day }}</strong> is <strong>{{ prediction.predicted_temp }} &deg;C</strong>.</p>
+        </div>
+
+        <canvas id="weatherChart" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('weatherChart').getContext('2d');
+        const weatherChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ weather_data.dates | safe }},
+                datasets: [{
+                    label: 'Temperature (°C)',
+                    data: {{ weather_data.temperatures | safe }},
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderWidth: 2,
+                    fill: true
+                },
+                {
+                    label: 'Humidity (%)',
+                    data: {{ weather_data.humidity | safe }},
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
